@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Day Workout Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Suez One', serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #666;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #eee;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: normal;
+            transition: box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        li:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+        @keyframes animatetop {
+            from {opacity: 0}
+            to {opacity: 1}
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>7-Day Workout Plan</h1>
+        
+        <h2>Day 1</h2>
+        <ul>
+            <li onclick="openModal(this)">30 minutes of jogging</li>
+            <li onclick="openModal(this)">3 sets of 15 squats</li>
+            <li onclick="openModal(this)">3 sets of 20 crunches</li>
+            <li onclick="openModal(this)">3 sets of 10 push-ups</li>
+            <li onclick="openModal(this)">1-minute plank</li>
+        </ul>
+
+        <h2>Day 2</h2>
+        <ul>
+            <li onclick="openModal(this)">30 minutes of cycling</li>
+            <li onclick="openModal(this)">3 sets of 15 lunges (each leg)</li>
+            <li onclick="openModal(this)">3 sets of 20 Russian twists</li>
+            <li onclick="openModal(this)">3 sets of 15 tricep dips</li>
+        </ul>
+
+        <h2>Day 3</h2>
+        <ul>
+            <li onclick="openModal(this)">20 minutes HIIT workout (alternating 1 minute of sprinting with 1 minute of walking)</li>
+            <li onclick="openModal(this)">3 sets of 15 burpees</li>
+            <li onclick="openModal(this)">3 sets of 20 leg raises</li>
+            <li onclick="openModal(this)">1-minute plank</li>
+        </ul>
+
+        <h2>Day 4</h2>
+        <ul>
+            <li onclick="openModal(this)">30 minutes brisk walking</li>
+            <li onclick="openModal(this)">3 sets of 15 push-ups</li>
+            <li onclick="openModal(this)">3 sets of 15 side planks (each side)</li>
+            <li onclick="openModal(this)">3 sets of 20 mountain climbers</li>
+        </ul>
+
+        <h2>Day 5</h2>
+        <ul>
+            <li onclick="openModal(this)">30 minutes swimming</li>
+            <li onclick="openModal(this)">3 sets of 15 squats</li>
+            <li onclick="openModal(this)">3 sets of 20 bicycle crunches</li>
+            <li onclick="openModal(this)">1-minute plank</li>
+        </ul>
+
+        <h2>Day 6</h2>
+        <ul>
+            <li onclick="openModal(this)">20 minutes HIIT workout</li>
+            <li onclick="openModal(this)">3 sets of 15 lunges</li>
+            <li onclick="openModal(this)">3 sets of 20 leg raises</li>
+            <li onclick="openModal(this)">3 sets of 15 push-ups</li>
+        </ul>
+
+        <h2>Day 7</h2>
+        <ul>
+            <li onclick="openModal(this)">30 minutes of jogging or brisk walking</li>
+            <li onclick="openModal(this)">3 sets of 15 burpees</li>
+            <li onclick="openModal(this)">3 sets of 20 Russian twists</li>
+            <li onclick="openModal(this)">1-minute plank</li>
+        </ul>
+
+        <div class="footer">
+            <p>Michael Mininberg</p>
+            <p>Aided by ChatGPT</p>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(element) {
+            document.getElementById('modalText').innerText = element.innerText;
+            document.getElementById('myModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        window.onload = function() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
